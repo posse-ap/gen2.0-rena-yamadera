@@ -1,8 +1,17 @@
-.header {
-     text-decoration:underline green
+.header{
+    margin: 0;
+}
+
+.line{
+    display:block;
+    margin-top: 10px;
+    width: 120px;
+    height: 2px;
+    background-color: #00ab36;
+    content: '';
 }
 body {
-    width: 500px;
+    width: 700px;
     margin-right: auto;
     margin-left: auto;
 }
@@ -24,3 +33,4 @@ border-color: lightgrey;
 border-width: 1px;
 cursor: pointer;
 }
+
