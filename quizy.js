@@ -26,6 +26,20 @@
         document.body.appendChild(div);
         div.textContent = '正解';
     })
+
+    document.getElementById("wrong1").addEventListener('click', () =>{
+        document.body.appendChild(div);
+        div.textContent = '不正解';
+    })
+    document.getElementById("wrong2").addEventListener('click', () =>{
+        document.body.appendChild(div);
+        div.textContent = '不正解';
+    })
+
+
+
+
+    
     
     // document.getElementById("correct").addEventListener = ('click, () 
     //     document.getElementById('div')
