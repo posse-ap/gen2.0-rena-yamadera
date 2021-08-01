@@ -49,3 +49,18 @@ cursor: pointer;
     margin-right: auto;
     margin-left: auto;
 }
+
+.right{
+    background-color: #287dff;
+    color: white;
+}
+
+.false{
+    background-color: #ff5128;
+    color: #ffffff;
+}
+
+.wrongAnswer{
+    content: "不正解";
+    text-decoration: underline skyblue;
+}

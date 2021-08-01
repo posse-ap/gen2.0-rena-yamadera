@@ -1,40 +1,49 @@
 'user strict';
 
-    document.getElementById('correct').addEventListener('click', () =>{
-        document.getElementById('correct').style.background= "#287dff" ;
-        document.getElementById('correct').style.color = "white";
+// デザインのものは全てCSSで書いた方がいい
+const correct = document.getElementById('correct');
+const wrong1 = document.getElementById('wrong1');
+const wrong2 = document.getElementById('wrong2');
+const results = document.createElement('div');
+results.classList.add('box');
 
-    })
-    
-    document.getElementById('wrong1').addEventListener('click', () =>{
-        document.getElementById('wrong1').style.background= "#ff5128";
-        document.getElementById('wrong1').style.color = "#ffffff"
-    })
+    correct.addEventListener("click", () => {
+      correct.classList.add("right");
+      document.body.appendChild(results);
+      results.textContent = '正解';
+    });
 
-    document.getElementById('wrong2').addEventListener('click', () =>{
-        document.getElementById('wrong2').style.background= "#ff5128";
-        document.getElementById('wrong2').style.color = "#ffffff"
-    })
+    wrong1.addEventListener("click", () => {
+      wrong1.classList.add("false");
+      document.body.appendChild(results);
+      results.classList.add('wrongAnswer');
+    });
 
-    const div = document.createElement('div');
+    wrong2.addEventListener("click", () => {
+      wrong2.classList.add("false");
+      document.body.appendChild(results);
+      results.classList.add('wrongAnswer');
+
+    // const div = document.createElement('div');
     // // constの名前をdivからresultsに変更したi
     // div.classList.add('box');
-    document.getElementById('div')
-    div.classList.add('box')
+    // document.getElementById('div')
+    // div.classList.add('box')
 
-    document.getElementById("correct").addEventListener('click', () =>{
-        document.body.appendChild(div);
-        div.textContent = '正解';
-    })
+    // correct.addEventListener('click', () =>{
+    //     document.body.appendChild(div);
+    //     div.textContent = '正解';
+    // })
 
-    document.getElementById("wrong1").addEventListener('click', () =>{
-        document.body.appendChild(div);
-        div.textContent = '不正解';
-    })
-    document.getElementById("wrong2").addEventListener('click', () =>{
-        document.body.appendChild(div);
-        div.textContent = '不正解';
-    })
+    // document.getElementById("wrong1").addEventListener('click', () =>{
+    //     document.body.appendChild(div);
+    //     div.textContent = '不正解';
+    // })
+    // document.getElementById("wrong2").addEventListener('click', () =>{
+    //     document.body.appendChild(div);
+    //     div.textContent = '不正解';
+    // })
+    
 
 
 
@@ -68,5 +77,3 @@
     //     div.textContent = '正解';
     // } else{
     //     div.textContent = '不正解'
-    // }
-     //    div.classList.toggle('box')
