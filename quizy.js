@@ -5,75 +5,44 @@ const correct = document.getElementById('correct');
 const wrong1 = document.getElementById('wrong1');
 const wrong2 = document.getElementById('wrong2');
 const results = document.createElement('div');
-results.classList.add('box');
-
-    correct.addEventListener("click", () => {
-      correct.classList.add("right");
-      document.body.appendChild(results);
-      results.textContent = '正解';
-    });
-
-    wrong1.addEventListener("click", () => {
-      wrong1.classList.add("false");
-      document.body.appendChild(results);
-      results.classList.add('wrongAnswer');
-    });
-
-    wrong2.addEventListener("click", () => {
-      wrong2.classList.add("false");
-      document.body.appendChild(results);
-      results.classList.add('wrongAnswer');
-
-    // const div = document.createElement('div');
-    // // constの名前をdivからresultsに変更したi
-    // div.classList.add('box');
-    // document.getElementById('div')
-    // div.classList.add('box')
-
-    // correct.addEventListener('click', () =>{
-    //     document.body.appendChild(div);
-    //     div.textContent = '正解';
-    // })
-
-    // document.getElementById("wrong1").addEventListener('click', () =>{
-    //     document.body.appendChild(div);
-    //     div.textContent = '不正解';
-    // })
-    // document.getElementById("wrong2").addEventListener('click', () =>{
-    //     document.body.appendChild(div);
-    //     div.textContent = '不正解';
-    // })
-    
+const correctAnswer = document.getElementById('correctAnswer');
+const incorrect = document.getElementById('incorrect');
 
 
+    correct.addEventListener("click", ok);
+    wrong1.addEventListener("click", error1);
+    wrong2.addEventListener("click", error2);
 
+    function ok() {
+        correct.classList.add("right");
+        wrong1.classList.remove("false");
+        wrong2.classList.remove("false");
 
-    
-    
-    // document.getElementById("correct").addEventListener = ('click, () 
-    //     document.getElementById('div')
-    //     div.classList.add('box')
+        correctAnswer.classList.remove("disAppear");
+        incorrect.classList.add("disAppear");
+    }
 
-    // })
-     
-       
-        
-    // const div = document.createElement('div');
-    // constの名前をdivからresultsに変更したい
-    // div.classList.add('box');
-    // div.addEventListener('click', () =>{
-    //     if (document.getElementById('correct')){
-    //         div.textContent = '正解';
-    //     }
-    //     else(
-    //         div.textContent = '不正解'
-    //     )
+    function error1() {
+        correct.classList.remove("right");
+        wrong1.classList.add("false");
+        wrong2.classList.remove("false");
+  
+        incorrect.classList.remove('disAppear');
+        correctAnswer.classList.add('disAppear')
+    }
+
+    function error2() {
+        correct.classList.remove("right");
+        wrong1.classList.remove("false");
+        wrong2.classList.add("false");
+  
+        incorrect.classList.remove('disAppear');
+        correctAnswer.classList.add('disAppear');
+    }
+
    
-        
-    // })
-    // document.body.appendChild(div);
-    // div.classList.toggle('box')
-    // if ('correct'){
-    //     div.textContent = '正解';
-    // } else{
-    //     div.textContent = '不正解'
+
+
+    
+    
+    

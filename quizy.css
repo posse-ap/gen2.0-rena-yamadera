@@ -1,3 +1,8 @@
+body {
+    width: 700px;
+    margin-right: auto;
+    margin-left: auto;
+}
 .header{
     margin: 0;
 }
@@ -10,11 +15,7 @@
     background-color: #00ab36;
     content: '';
 }
-body {
-    width: 700px;
-    margin-right: auto;
-    margin-left: auto;
-}
+
 img {
     width: 700px;
 }
@@ -59,8 +60,16 @@ cursor: pointer;
     background-color: #ff5128;
     color: #ffffff;
 }
+.disAppear{
+    display: none;
+}
 
-.wrongAnswer{
-    content: "不正解";
+.rightAnswer{
     text-decoration: underline skyblue;
+    font-size: 20px;
+}
+    
+.wrongAnswer{
+    text-decoration: underline red;
+    font-size: 20px;
 }
