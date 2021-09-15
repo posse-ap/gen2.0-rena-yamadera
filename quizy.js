@@ -1,20 +1,22 @@
 'user strict';
 
+const problem =  [
+    ['たかなわ','たかわ','こうわ'],
+    ['かめいど','かめど','かめと'],
+    ['こうじまち','かゆまち','おかとまち'],
+    ['おなりもん','おかどもん','ごせいもん'],
+    ['とどろき','たたりき','たたら'],
+    ['しゃくじい','いじい','せきこうい'],
+    ['ぞうしき','ざっしょく','ざっしき'],
+    ['おかちまち','みとちょう','ごしろちょう'],
+    ['ししぼね','ろっこつ','しこね'],
+    ['こぐれ','こしゃく','こばく']
+]
 
 for (let i = 0; i < 10; i++){
-const problem =  [
-     ['たかなわ','たかわ','こうわ'],
-     ['かめいど','かめど','かめと'],
-     ['こうじまち','かゆまち','おかとまち'],
-     ['おなりもん','おかどもん','ごせいもん'],
-     ['とどろき','たたりき','たたら'],
-     ['しゃくじい','いじい','せきこうい'],
-     ['ぞうしき','ざっしょく','ざっしき'],
-     ['おかちまち','みとちょう','ごしろちょう'],
-     ['ししぼね','ろっこつ','しこね'],
-     ['こぐれ','こしゃく','こばく']
-]
+
 const picture = ['https://d1khcm40x1j0f.cloudfront.net/quiz/34d20397a2a506fe2c1ee636dc011a07.png','https://d1khcm40x1j0f.cloudfront.net/quiz/512b8146e7661821c45dbb8fefedf731.png','https://d1khcm40x1j0f.cloudfront.net/quiz/ad4f8badd896f1a9b527c530ebf8ac7f.png','https://d1khcm40x1j0f.cloudfront.net/quiz/ee645c9f43be1ab3992d121ee9e780fb.png','https://d1khcm40x1j0f.cloudfront.net/quiz/6a235aaa10f0bd3ca57871f76907797b.png','https://d1khcm40x1j0f.cloudfront.net/quiz/0b6789cf496fb75191edf1e3a6e05039.png','https://d1khcm40x1j0f.cloudfront.net/quiz/23e698eec548ff20a4f7969ca8823c53.png','https://d1khcm40x1j0f.cloudfront.net/quiz/50a753d151d35f8602d2c3e2790ea6e4.png','https://d1khcm40x1j0f.cloudfront.net/words/8cad76c39c43e2b651041c6d812ea26e.png','https://d1khcm40x1j0f.cloudfront.net/words/34508ddb0789ee73471b9f17977e7c9c.png']
+
 
 // ヘッダー
 const question = document.getElementById("question");
@@ -35,42 +37,72 @@ question.appendChild(questionPic);
 
 // 正解のボタン作成
 const choiceBox = document.createElement("ul");
-const choices = document.createElement("p");
+// const inside = document.createElement("li");
+// let choices = document.createElement("p");
 const ansButton = document.createElement("button");
 ansButton.classList.add("answerbutton");
 ansButton.id = `correct${i}`;
-const inside = document.createElement("li");
-inside.innerText = `${problem[i][0]}`;
-ansButton.appendChild(inside);
-choices.appendChild(ansButton);
-choiceBox.appendChild(choices);
+
+ansButton.innerText = `${problem[i][0]}`;
+// ansButton.appendChild(inside);
+// choices.appendChild(ansButton);
+choiceBox.appendChild(ansButton);
 question.appendChild(choiceBox);
 
 // 1つ目の不正解ボタン作成
-const choiceBoxFalse = document.createElement("ul");
-const choicesFalse = document.createElement("p");
+// const choiceBoxFalse = document.createElement("ul");
+// const insideFalse = document.createElement("li");
+// let choicesFalse = document.createElement("p");
 const ansButtonFalse = document.createElement("button");
 ansButtonFalse.classList.add("answerbutton");
 ansButtonFalse.id = `wrong${i}`;
-const insideFalse = document.createElement("li");
-insideFalse.innerText =`${problem[i][1]}`;
-ansButtonFalse.appendChild(insideFalse);
-choicesFalse.appendChild(ansButtonFalse);
-choiceBoxFalse.appendChild(choicesFalse);
-question.appendChild(choiceBoxFalse);
+
+ansButtonFalse.innerText =`${problem[i][1]}`;
+// ansButtonFalse.appendChild(insideFalse);
+// choicesFalse.appendChild(ansButtonFalse);
+choiceBox.appendChild(ansButtonFalse);
+question.appendChild(choiceBox);
 
 // 2つ目の不正解ボックス作成
-const choiceBoxWrong = document.createElement("ul");
-const choicesWrong = document.createElement("p");
+// const choiceBoxWrong = document.createElement("ul");
+// const insideWrong = document.createElement("li");
+// let choicesWrong = document.createElement("p");
 const ansButtonWrong = document.createElement("button");
 ansButtonWrong.classList.add("answerbutton");
 ansButtonWrong.id = `notRight${i}`;
-const insideWrong = document.createElement("li");
-insideWrong.innerText = `${problem[i][2]}`;
-ansButtonWrong.appendChild(insideWrong);
-choicesWrong.appendChild(ansButtonWrong);
-choiceBoxWrong.appendChild(choicesWrong);
-question.appendChild(choiceBoxWrong);
+
+ansButtonWrong.innerText = `${problem[i][2]}`;
+// ansButtonWrong.appendChild(insideWrong);
+// choicesWrong.appendChild(ansButtonWrong);
+choiceBox.appendChild(ansButtonWrong);
+question.appendChild(choiceBox);
+
+// const test = [inside,insideFalse,insideWrong]
+ 
+// function shuffle(arr) {
+// for(var j = shuffle.length - 1; j > 0; j--){
+//     var r = Math.floor(Math.random() * (j + 1));
+//     var tmp = shuffle[j];
+//     shuffle[j] = shuffle[r];
+//     shuffle[r] = tmp;
+// }
+// return arr;
+// };
+// problem.map(shuffle);
+
+const shuffle = [ansButton,ansButtonFalse,ansButtonWrong]
+
+function shuffleFunc(shuffle){
+    for(var i = shuffle.length - 1; i > 0; i--){
+    var r = Math.floor(Math.random() * (i + 1));
+    // var tmp = shuffle[i];
+    [shuffle[r],shuffle[i]] = [shuffle[i],shuffle[r]];
+    
+    }
+    return shuffle;
+};
+
+shuffleFunc(shuffle);
 
 //正解時の詳細ボックス
 const rightDisplay = document.createElement("div");
