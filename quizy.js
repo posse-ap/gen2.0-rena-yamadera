@@ -35,6 +35,8 @@ questionPic.src = `${picture[i]}`;
 questionPic.alt = '高輪';
 question.appendChild(questionPic);
 
+
+
 // 正解のボタン作成
 const choiceBox = document.createElement("ul");
 // const inside = document.createElement("li");
@@ -42,12 +44,11 @@ const choiceBox = document.createElement("ul");
 const ansButton = document.createElement("button");
 ansButton.classList.add("answerbutton");
 ansButton.id = `correct${i}`;
-
 ansButton.innerText = `${problem[i][0]}`;
+
 // ansButton.appendChild(inside);
 // choices.appendChild(ansButton);
-choiceBox.appendChild(ansButton);
-question.appendChild(choiceBox);
+
 
 // 1つ目の不正解ボタン作成
 // const choiceBoxFalse = document.createElement("ul");
@@ -60,8 +61,7 @@ ansButtonFalse.id = `wrong${i}`;
 ansButtonFalse.innerText =`${problem[i][1]}`;
 // ansButtonFalse.appendChild(insideFalse);
 // choicesFalse.appendChild(ansButtonFalse);
-choiceBox.appendChild(ansButtonFalse);
-question.appendChild(choiceBox);
+
 
 // 2つ目の不正解ボックス作成
 // const choiceBoxWrong = document.createElement("ul");
@@ -74,8 +74,7 @@ ansButtonWrong.id = `notRight${i}`;
 ansButtonWrong.innerText = `${problem[i][2]}`;
 // ansButtonWrong.appendChild(insideWrong);
 // choicesWrong.appendChild(ansButtonWrong);
-choiceBox.appendChild(ansButtonWrong);
-question.appendChild(choiceBox);
+
 
 // const test = [inside,insideFalse,insideWrong]
  
@@ -103,6 +102,15 @@ function shuffleFunc(shuffle){
 };
 
 shuffleFunc(shuffle);
+
+choiceBox.appendChild(shuffle[0]);
+question.appendChild(choiceBox);
+
+choiceBox.appendChild(shuffle[1]);
+question.appendChild(choiceBox);
+
+choiceBox.appendChild(shuffle[2]);
+question.appendChild(choiceBox);
 
 //正解時の詳細ボックス
 const rightDisplay = document.createElement("div");
