@@ -11,13 +11,6 @@ quizList.push(['おかちまち','みとちょう','ごしろちょう']);
 quizList.push(['ししぼね','ろっこつ','しこね']);
 quizList.push(['こぐれ','こしゃく','こばく']);
 
-// function check(question_id, selection_id, valid_id){
-// var buttonLists = document.getElementsByName('buttonLists')
-//  buttonLists.forEach(buttonList =>{
-//     buttonList.style.pointerEvents = 'none';
-//  });
-// }
-// function createHtml(question_id, selection_id, valid_id){
 for (let i = 0; i < 10; i++){
 var contents = `<div id="question"></div>`
     +  `<h1 class="header">${i+1}.この地名はなんて読む？</h1> `
@@ -30,13 +23,36 @@ var contents = `<div id="question"></div>`
        </ul>`
      + `<div class="box disAppear" id="correctAnswer${i}">`
           + `<p class="rightAnswer">正解！</p>`
-           +`<p>正解は「たかなわ」です！</p>`
+           +`<p>正解は「${quizList[i][0]}」です！</p>`
       +`</div>`
     +   `<div class="box disAppear" id="incorrect${i}">`
            +`<p class="wrongAnswer">不正解！</p>`
-           +`<p>正解は「たかなわ」です！</p>`
+           +`<p>正解は「${quizList[i][0]}」です！</p>`
        +`</div> `
-    // }
+
+const rightVer = document.getElementById(`correct${i}`);
+var wrong1 = document.getElementById(`wrong1${i}`);
+var wrong2 = document.getElementById(`wrong2${i}`);
+
+// rightVer.classList.add("right");
+
+// wrong1.className.add("false");
+
+// function ok() { 
+//     rightVer.classList.add("right");
+
+// }
+
+
+    function shuffleFunc(shuffle){
+        for(var i = shuffle.length -1; i > 0; i--){
+            var r = Math.floor(Math.random() * (i + 1));
+            [shuffle[r],shuffle[i]] = [shuffle[i],shuffle[r]];
+        }
+        return shuffle;
+    };
+
+
     const main = document.getElementById('main');
     main.insertAdjacentHTML("beforeend", contents);
 }
