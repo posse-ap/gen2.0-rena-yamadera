@@ -1,0 +1,22 @@
+body{
+    width: 100%;
+    height: auto;
+}
+.header{
+    height: 64px;
+    position: fixed;
+    width: 100%;
+}
+.header_img{
+width: 100px;
+position: absolute;
+}
+.header_text{
+    display: flex;
+    justify-content: flex-end;
+}
+.header_button{
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 15px;
+}
