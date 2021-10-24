@@ -1,22 +1,234 @@
-body{
-    width: 100%;
-    height: auto;
+body {
+	width: 100%;
+	background-color: rgb(243, 241, 241);
 }
-.header{
-    height: 64px;
-    position: fixed;
-    width: 100%;
+.header {
+	top: 0;
+	left: 0;
+	height: 64px;
+	position: fixed;
+	width: 100%;
+	display: flex;
+	gap: 20px;
+	align-items: center;
+	background-color: white;
+	z-index: 100;
 }
-.header_img{
-width: 100px;
-position: absolute;
+.header_img {
+	width: 90px;
+	object-fit: contain;
+	margin-left: 15px;
 }
-.header_text{
-    display: flex;
-    justify-content: flex-end;
+.header_text {
+	display: flex;
+	color: gray;
 }
-.header_button{
-    display: flex;
-    justify-content: flex-end;
-    margin-right: 15px;
+.header_button_box {
+	justify-content: flex-end;
+	margin-left: auto;
+	margin-right: 20px;
+}
+.header_button {
+	background: linear-gradient(to right, rgb(0, 98, 255), aqua);
+	cursor: pointer;
+	border-radius: 30px;
+	padding: 10px 40px 10px 40px;
+	color: white;
+	border: none;
+	box-shadow: 0px 4px 10px skyblue;
+}
+
+.largest_box {
+	display: flex;
+	top: 0px;
+	left: 0px;
+	position: absolute;
+	justify-content: center;
+	height: 460px;
+	padding-top: 84px;
+	gap: 20px;
+}
+
+.second_box {
+	width: 40%;
+	height: 100%;
+	gap: 20px;
+	overflow: hidden;
+}
+/* time box */
+.time_boxes {
+	top: 64px;
+	display: flex;
+	gap: 20px;
+}
+.time_box {
+	width: 33%;
+	box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+	border-radius: 10px;
+	background-color: white;
+	padding: 10px;
+}
+.time_title {
+	color: #1071bd;
+	text-align: center;
+	margin: 0px;
+}
+.time_number {
+	font: bold;
+	font-size: 30px;
+	text-align: center;
+	margin: 0;
+}
+.time_hour {
+	text-align: center;
+	margin: 0px;
+}
+
+/* graph */
+.graph_box {
+	display: inline-block;
+	box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+	border-radius: 10px;
+	overflow: hidden;
+	background-color: #fff;
+	margin: 20px 0px 0px 0px;
+}
+.graph_img {
+	max-height: 100%;
+	max-width: 100%;
+}
+
+/* circle graphs */
+.circle_graphs {
+	display: flex;
+	top: 64px;
+	height: 100%;
+	gap: 20px;
+}
+
+.circle_box {
+	background-color: white;
+	border-radius: 10px;
+}
+
+.circle_text {
+	padding: 0px 0px 0px 20px;
+	font-weight: bold;
+}
+
+/* date */
+.bottom_box {
+	text-align: center;
+}
+.circle_box {
+	height: 100%;
+	width: 50%;
+	text-align: center;
+}
+
+.circle_img {
+	max-width: 100%;
+}
+
+.circle_lists {
+	padding: 0px;
+	text-align: center;
+}
+.graph_list {
+	display: inline-block;
+	padding: 0px 5px 0px 0px;
+	position: relative;
+}
+
+.circle_dot {
+	border-radius: 50%; /*丸くする*/
+	width: 5px; /*点の幅*/
+	height: 5px; /*点の高さ*/
+	display: block;
+	position: absolute; /*絶対配置*/
+	left: 0; /*点の位置*/
+	top: 0.6em; /*点の位置*/
+	content: "";
+	background: aqua;
+	margin: 0px 10px 0px 0px;
+}
+
+.circle_graphs_dot {
+	color: cyan;
+}
+
+/* モーダルCSS */
+.modalArea {
+	display: none;
+	position: fixed;
+	z-index: 100; /*サイトによってここの数値は調整 */
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.modalBg {
+	width: 100%;
+	height: 100%;
+	background-color: rgba(30, 30, 30, 0.9);
+}
+.modalContents {
+	text-align: center;
+}
+.modalWrapper {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 900px;
+	padding: 56px;
+	background-color: #fff;
+	border-radius: 30px;
+}
+
+.modal_boxes {
+	display: flex;
+	gap: 40px;
+	justify-content: center;
+	width: 100%;
+}
+.modal_box {
+	text-align: left;
+    width: 50%;
+}
+
+.modal_input {
+	border-radius: 20px;
+	background: lightgray;
+}
+.modal_button {
+	background: linear-gradient(to right, rgb(0, 98, 255), aqua);
+	cursor: pointer;
+	border-radius: 30px;
+	padding: 10px 40px 10px 40px;
+	color: white;
+	border: none;
+	box-shadow: 0px 4px 10px skyblue;
+	justify-content: center;
+}
+
+.modal_check_box{
+	display: flex;
+	gap: 10px 10px;
+	flex-wrap: wrap;
+}
+.modal_input_check{
+    background: lightgray;
+    border-radius: 15px;
+		padding: 5px;
+		cursor: pointer;
+}
+.closeModal {
+	background: gray;
+	border-radius: 10px;
+	position: absolute;
+	top: 0.5rem;
+	right: 1rem;
+	cursor: pointer;
 }
