@@ -7,8 +7,8 @@
     <title>Top画面</title>
     <link rel="stylesheet" href="https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/html5resetcss/html5reset-1.6.css">
     <link rel="stylesheet" href="top.css">
-    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="top.js"></script>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    
 </head>
 <body>
 <!-- header -->
@@ -48,7 +48,8 @@
 
         <!-- graph -->
         <div class="graph_box">
-            <img class="graph_img" src="./img/graph1.png" alt="">
+					<canvas id="myBarChart" class="bar_chart">
+					</canvas>
         </div>
 
     </div>
@@ -58,27 +59,15 @@
         <div class="circle_graphs">
             <div class="circle_box">
                 <p class="circle_text">学習言語</p>
-                <img class="circle_img" src="./img/circlegraph1.png" alt="">
-                <ul class="circle_lists">
-                    <li class="graph_list"><span class="circle_dot"></span>
-                        Javascript</li>
-                    <li class="graph_list">CSS</li>
-                    <li class="graph_list">PHP</li>
-                    <li class="graph_list">HTML</li>
-                    <li class="graph_list">Laravel</li>
-                    <li class="graph_list">SQL</li>
-                    <li class="graph_list">SHELL</li>
-                    <li class="graph_list">情報システム基礎知識（その他）</li>
-                </ul>
+								<div class="doughnut_graph">
+								<canvas id="myPieChart" class="doughnut_chart"></canvas>
+						  	</div>
             </div>
             <div class="circle_box">
                 <p class="circle_text">学習コンテンツ</p>
-                <img class="circle_img" src="./img/circlegraph2.png" alt="">
-                <ul>
-                    <li><span class="circle_list_dot"></span>ドットインストール</li>
-                    <li>N予備校</li>
-                    <li>POSSE課題</li>
-                </ul>
+								<div class="doughnut_graph">
+									<canvas id="myDoughnutChart" class="doughnut_chart"></canvas>
+								</div>
             </div>
         </div>
     </div>
@@ -97,13 +86,13 @@
   <div class="modalWrapper">
     <div class="modalContents">
         <div class="modal_boxes">
-            <div class="modal_box">
+            <div class="modal_box" id="date_box">
                 <div class="">
-                    <p>学習日</p>
-                    <input class="modal_input" type="date">
+									<h1 class="modal_head">学習日</h1>
+                    <input type="date" name="datepicker" id="=js-datepicker">
                 </div>
                 <div>
-                    <p>学習コンテンツ（複数選択可）</p>
+									<h1 class="modal_head">学習コンテンツ（複数選択可</h1>
 										<div  class="modal_check_box">
                     <label  class="modal_input_check" for=""><input type="checkbox" name="" id="">N予備校</label>
                     <label  class="modal_input_check" for=""><input type="checkbox" name="" id="">ドットインストール</label>
@@ -111,7 +100,7 @@
 									  </div>
 									</div>
                 <div>
-                    <p>学習言語（複数選択可）</p>
+									<h1 class="modal_head">学習言語（複数選択可）</h1>
 										<div  class="modal_check_box">
                     <label  class="modal_input_check" for=""><input class="" type="checkbox" name="" id="">HTML</label>
                     <label  class="modal_input_check" for=""><input type="checkbox" name="" id="">CSS</label>
@@ -125,27 +114,53 @@
                 </div>
             </div>
             <div class="modal_box">
-                <div class="">
-                    <p>学習時間</p>
-                    <input class="modal_input" type="text">
+                <div class="modal_hour">
+									<h1 class="modal_head">学習時間</h1>
+                    <input class="modal_input hour_input" type="text">
                 </div>
-                <div>
-                    <p>Twitter用コメント</p>
-                    <input class="modal_input" type="text">
+                <div class="modal_twitter">
+									<h1 class="modal_head">Twitter用コメント</h1>
+									<textarea class="modal_input twitter_input" name="" id="" cols="30" rows="10"></textarea>
+                    <!-- <input class="modal_input twitter_input" type="text"> -->
                 </div>
 								<label  class="" for=""><input class="" type="checkbox" name="" id="">Twitterに自動投稿する</label>
             </div>
         </div>
-        <button class="modal_button" id="modal_record">記録・投稿</button>
+        <button class="modal_button" id="button" type="button">記録・投稿</button>
+					<!-- ローディング画面 -->
+				<div id="overlay">
+					<div class="cv-spinner">
+						<span class="spinner"></span>
+					</div>
+				</div>
+				<!-- 完了画面 -->
+				<div id="finished" class="finished_hide">
+					<div class="finished_box">
+					<img src="./img/awesome.png" alt="">
+					<p>記録・投稿<br>完了しました</p>
+				</div>
+				</div>
     </div>
+
     <div id="closeModal" class="closeModal">
       ×
     </div>
   </div>
 
-	<!-- ローディング画面 -->
-
 </section>
 
+<!-- 日付 -->
+<section id="modalArea" class="modalArea">
+  <div id="modalBg" class="modalBg"></div>
+  <div class="modalWrapper"></div>
+    <div class="modalContents">
+			
+		</div>
+</section>			
+
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
+	<script src="top.js"></script>
 </body>
 </html>
