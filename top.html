@@ -13,72 +13,79 @@
 <body>
 <!-- header -->
 <header class="header">
-<div class="header_img_box">
-    <img class="header_img" src="./img/posselogo.png" alt="">
-</div>
-<div class="header_text_box">
-    <p class="header_text">4th week</p>
-</div>
-<div class="header_button_box">
-    <button class="header_button" id="openModal">記録・投稿</button>
-</div>
+	<div class="header_img_box">
+		<img class="header_img" src="./img/posselogo.png" alt="">
+	</div>
+	<div class="header_text_box">
+		<p class="header_text">4th week</p>
+	</div>
+	<div class="header_button_box">
+		<button class="header_button" id="openModal">記録・投稿</button>
+	</div>
 </header>
+<div class="all_box">
 
 
-<!-- time box -->
-<div class="largest_box">
-    <div class="second_box">
-        <div class="time_boxes">
-            <div class="time_box">
-                <p class="time_title">Today</p>
-                <p class="time_number">3</p>
-                <p class="time_hour">hour</p>
-            </div>
-            <div class="time_box">
-                <p class="time_title">Month</p>
-                <p class="time_number">120</p>
-                <p class="time_hour">hour</p>
-            </div>
-            <div class="time_box">
-                <p class="time_title">Total</p>
-                <p class="time_number">1348</p>
-                <p class="time_hour">hour</p>
-            </div>
-        </div>
+	<!-- time box -->
+	<div class="largest_box">
+		<div class="second_box">
+			<div class="time_boxes">
+				<div class="time_box">
+					<p class="time_title">Today</p>
+					<p class="time_number">3</p>
+					<p class="time_hour">hour</p>
+				</div>
+				<div class="time_box">
+					<p class="time_title">Month</p>
+					<p class="time_number">120</p>
+					<p class="time_hour">hour</p>
+				</div>
+				<div class="time_box">
+					<p class="time_title">Total</p>
+					<p class="time_number">1348</p>
+					<p class="time_hour">hour</p>
+				</div>
+			</div>
 
-        <!-- graph -->
-        <div class="graph_box">
-					<canvas id="myBarChart" class="bar_chart">
-					</canvas>
-        </div>
+			<!-- graph -->
+			<div class="graph_box">
+				<canvas id="myBarChart" class="bar_chart">
+				</canvas>
+			</div>
 
-    </div>
+		</div>
 
-    <div class="second_box">
-        <!-- circle graph -->
-        <div class="circle_graphs">
-            <div class="circle_box">
-                <p class="circle_text">学習言語</p>
-								<div class="doughnut_graph">
-								<canvas id="myPieChart" class="doughnut_chart"></canvas>
-						  	</div>
-            </div>
-            <div class="circle_box">
-                <p class="circle_text">学習コンテンツ</p>
-								<div class="doughnut_graph">
-									<canvas id="myDoughnutChart" class="doughnut_chart"></canvas>
-								</div>
-            </div>
-        </div>
-    </div>
+		<div class="second_box">
+			<!-- circle graph -->
+			<div class="circle_graphs">
+				<div class="circle_box">
+					<p class="circle_text">学習言語</p>
+					<div class="doughnut_graph">
+						<canvas id="myPieChart" class="doughnut_chart"></canvas>
+					</div>
+				</div>
+				<div class="circle_box">
+					<p class="circle_text">学習コンテンツ</p>
+					<div class="doughnut_graph">
+						<canvas id="myDoughnutChart" class="doughnut_chart"></canvas>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- date -->
+	<div class="bottom_box">
+		<i class="fas fa-chevron-left"></i>
+		<p class="bottom_month">
+			 <2020年10月>
+		</p>
+		<i class="fas fa-chevron-right"></i>
+		
+	</div>
+
 </div>
 
-<!-- date -->
-<div class="bottom_box">
-    <i class="fas fa-chevron-left"></i>
-    <p><  2020年10月  ></p>
-    <i class="fas fa-chevron-right"></i>
-</div>
+
 
 <!-- モーダルエリアここから -->
 <section id="modalArea" class="modalArea">
@@ -124,6 +131,7 @@
                     <!-- <input class="modal_input twitter_input" type="text"> -->
                 </div>
 								<label  class="" for=""><input class="" type="checkbox" name="" id="">Twitterに自動投稿する</label>
+								<button id="twitter">Tweet</button>
             </div>
         </div>
         <button class="modal_button" id="button" type="button">記録・投稿</button>

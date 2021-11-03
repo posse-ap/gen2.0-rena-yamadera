@@ -211,3 +211,16 @@ var myDoughnutChart = new Chart(chart, {
 },
 plugins: [dataLabelPlugin]
 });
+
+
+// twitter 遷移ボタン
+document.getElementById("twitter").addEventListener('click', function(event) {
+    event.preventDefault();
+    var left = Math.round(window.screen.width / 2 - 275);
+    var top = (window.screen.height > 420) ? Math.round(window.screen.height / 2 - 210) : 0;
+    window.open(
+        "https://twitter.com/intent/tweet?text=" + encodeURIComponent(document.getElementById("content")),
+        null,
+        // "scrollbars=yes,resizable=yes,toolbar=no,location=yes,width=550,height=420,left=" + left + ",top=" + top
+        );
+});
