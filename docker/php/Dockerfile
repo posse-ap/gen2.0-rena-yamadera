@@ -1,2 +1,2 @@
-FROM php:7.2-fpm
+FROM php:fpm
 COPY php.ini /usr/local/etc/php/
