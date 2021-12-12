@@ -231,5 +231,12 @@ function record_post(){
     }
 }
 
+number(1);
+function number(x) {
+	var num = x;
+	console.log(num);
+}
+
+
 record_button.addEventListener('click', record_post);
 
