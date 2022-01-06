@@ -12,27 +12,37 @@ services:
 
   php:
     build: ./php
+    image: php:8.0-fpm-alpine
     volumes:
       - ./www/html:/var/www/html
     depends_on:
-      - db
+      - mysql
 
-  db:
-    image: mysql:5.7
-    ports:
-      - 13306:3306
-    volumes:
-      - ./mysql/data:/var/lib/mysql
-    environment:
-      MYSQL_ROOT_PASSWORD: secret
+  # db:
+  #   image: mysql:5.7
+  #   ports:
+  #     - 13306:3306
+  #   volumes:
+    #   - ./mysql/data:/var/lib/mysql
+    # environment:
+    #   MYSQL_ROOT_PASSWORD: secret
   
   mysql:
     build: ./mysql/    #Dockerfileからビルドすることを示す
     volumes:
+      - ./mysql/data:/var/lib/mysql
+      - ./mysql/conf:/etc/mysql/conf.d
       - ./mysql/db:/docker-entrypoint-initdb.d  #初期データをマウントする場所
-    image: original_mysql_world # イメージの名前
+    image: mysql:latest # イメージの名前
     environment:
-      - MYSQL_ROOT_PASSWORD=renapi0513   #コンテナ内のMySQLを起動する際のパスワードを設定
+      MYSQL_ROOT_PASSWORD: secret   #コンテナ内のMySQLを起動する際のパスワードを設定
+      MYSQL_DATABASE: quizy_database
+      MYSQL_USER: rena
+      MYSQL_PASSWORD: secret
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci
+    ports:
+       - 3306:3306
+    
 
     # phpmyadmin:
     #   image: phpmyadmin/phpmyadmin:latest
