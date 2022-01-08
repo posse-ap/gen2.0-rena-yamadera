@@ -17,22 +17,15 @@ services:
       - ./www/html:/var/www/html
     depends_on:
       - mysql
-
-  # db:
-  #   image: mysql:5.7
-  #   ports:
-  #     - 13306:3306
-  #   volumes:
-    #   - ./mysql/data:/var/lib/mysql
-    # environment:
-    #   MYSQL_ROOT_PASSWORD: secret
   
   mysql:
     image: mysql:latest # イメージの名前
 
     volumes:
+      - ./mysql/initdb.d:/docker-entrypoint-initdb.d
       - ./mysql/data:/var/lib/mysql
       - ./mysql/my.cnf:/etc/mysql/conf.d/my.cnf
+     
 
       # - ./mysql/conf:/etc/mysql/conf.d
       # - ./mysql/db:/docker-entrypoint-initdb.d  #初期データをマウントする場所
@@ -42,6 +35,8 @@ services:
       MYSQL_DATABASE: quizy_database
       MYSQL_USER: rena
       MYSQL_PASSWORD: secret
+      
+    # command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci
     command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci --skip-character-set-client-handshake
 
     ports:
