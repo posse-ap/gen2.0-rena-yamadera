@@ -28,18 +28,22 @@ services:
     #   MYSQL_ROOT_PASSWORD: secret
   
   mysql:
-    build: ./mysql/    #Dockerfileからビルドすることを示す
+    image: mysql:latest # イメージの名前
+
     volumes:
       - ./mysql/data:/var/lib/mysql
-      - ./mysql/conf:/etc/mysql/conf.d
-      - ./mysql/db:/docker-entrypoint-initdb.d  #初期データをマウントする場所
-    image: mysql:latest # イメージの名前
+      - ./mysql/my.cnf:/etc/mysql/conf.d/my.cnf
+
+      # - ./mysql/conf:/etc/mysql/conf.d
+      # - ./mysql/db:/docker-entrypoint-initdb.d  #初期データをマウントする場所
+     
     environment:
       MYSQL_ROOT_PASSWORD: secret   #コンテナ内のMySQLを起動する際のパスワードを設定
       MYSQL_DATABASE: quizy_database
       MYSQL_USER: rena
       MYSQL_PASSWORD: secret
-    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci
+    command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci --skip-character-set-client-handshake
+
     ports:
        - 3306:3306
     
