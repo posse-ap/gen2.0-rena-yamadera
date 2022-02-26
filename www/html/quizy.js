@@ -34,8 +34,6 @@ questionPic.src = `${picture[i]}`;
 questionPic.alt = '高輪';
 question.appendChild(questionPic);
 
-
-
 // 正解のボタン作成
 const choiceBox = document.createElement("ul");
 const ansButton = document.createElement("button");
@@ -49,7 +47,6 @@ ansButtonFalse.classList.add("answerbutton");
 ansButtonFalse.id = `wrong${i}`;
 
 ansButtonFalse.innerText =`${problem[i][1]}`;
-
 
 // 2つ目の不正解ボックス作成
 const ansButtonWrong = document.createElement("button");
@@ -115,7 +112,6 @@ let wrong2 = document.getElementById(`notRight${i}`);
 let results = document.createElement('div');
 let correctAnswer = document.getElementById(`correctAnswer${i}`);
 let incorrect = document.getElementById(`incorrect${i}`);
-
 
     correct.addEventListener("click", ok);
     wrong1.addEventListener("click", error1);
