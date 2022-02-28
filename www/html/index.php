@@ -22,23 +22,29 @@ try{
         exit;
     };
     $id = filter_input(INPUT_GET, 'id');
-    $stmt = $pdo->query("SELECT * FROM big_questions WHERE id ='". $id ."'");
-    $area = $stmt->fetchAll(); //レコード取って来る
+    $stmt = $pdo->query("SELECT * FROM big_questions WHERE id ='". $id ."'");//レコード取って来る
+    $area = $stmt->fetchAll(); //配列にする
     print_r($area[0]['name']) . PHP_EOL;
 
-    $pic_stmt = $pdo->query("SELECT * FROM questions WHERE big_question_id ='". $id ."'");
-    $pic_area = $pic_stmt->fetchAll();
-    print_r($pic_area[0]['image']) . PHP_EOL;
-    print_r($pic_area[1]['image']) . PHP_EOL;
+    $stmt = $pdo->query("SELECT * FROM questions WHERE big_question_id ='". $id ."'");
+    $pic_areas = $stmt->fetchAll();
+    // print_r($pic_area) . PHP_EOL;
+    print_r($pic_areas[0]['image']) . PHP_EOL;
 
     $prob_stmt = $pdo->query("SELECT * FROM choices WHERE question_id ='". $id ."'");
 
 
     print_r($area);
-    
-//     echo $area[$id];
-//     $stmt1 = $pdo->query("SELECT name FROM big_questions WHERE id ='". $id ."'");
-//     $areaname = $stmt1->fetchAll();
+
+if($id==1){
+    $stmt = $pdo->query("SELECT * FROM choices WHERE question_id = 1 OR question_id=2");
+    $choices = $stmt->fetchAll();
+}else{
+    $stmt = $pdo->query("SELECT * FROM choices WHERE question_id = 3");
+    $choices = $stmt->fetchAll();
+}
+
+
 // ?>
 
 <!DOCTYPE html>
@@ -54,17 +60,19 @@ try{
 <h1 class="title">ガチで<?=$area[0]['name'];?>の人しか解けない！ ＃<?=$area[0]['name'];?>の難読地名クイズ</h1>
 
     <!-- <div id="question"></div> -->
+<?php foreach ($pic_areas as $i=>$pic_area){?>
 
-    <h2 class="header">この地名はなんて読む？</h2>
+    <h2 class="header"><?php echo ($i+1); ?>.この地名はなんて読む？</h2>
     <div class="line"></div>
 
-    <img src="../img/<?=$pic_area[0]['image'];?>" alt="aa">
+    <img src="../img/<?=$pic_area['image'];?>" alt="aa">
 
     <ul>
         <button class="answerbutton"></button>
         <button class="answerbutton"></button>
         <button class="answerbutton"></button>
-</ul>
+    </ul>
+<?php }; ?>
 
     <script src="quizy.js">
     </script>
