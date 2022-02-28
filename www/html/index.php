@@ -38,11 +38,14 @@ try{
 
 if($id==1){
     $stmt = $pdo->query("SELECT * FROM choices WHERE question_id = 1 OR question_id=2");
+    // global $choices;
     $choices = $stmt->fetchAll();
 }else{
     $stmt = $pdo->query("SELECT * FROM choices WHERE question_id = 3");
+    // global $choices;
     $choices = $stmt->fetchAll();
 }
+print_r($choices[0]['name']);
 
 
 // ?>
@@ -68,9 +71,11 @@ if($id==1){
     <img src="../img/<?=$pic_area['image'];?>" alt="aa">
 
     <ul>
-        <button class="answerbutton"></button>
-        <button class="answerbutton"></button>
-        <button class="answerbutton"></button>
+    <?php for($j = 0; $j < 3; $j++){;?>
+        <button class="answerbutton"><?php echo $choices[$i*3+$j]['name']?></button>
+
+    <?php };?>
+
     </ul>
 <?php }; ?>
 
