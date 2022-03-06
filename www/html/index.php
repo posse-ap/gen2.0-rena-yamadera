@@ -37,6 +37,10 @@ try{
 
     print_r($area);
 
+    $stmt = $pdo->query("SELECT name FROM choices WHERE valid = 1 AND 
+                        (SELECT * FROM questions big_question_id ='". $id ."')");
+    $right = $stmt->fetchAll();
+
 if($id==1){
     $stmt = $pdo->query("SELECT * FROM choices WHERE question_id = 1 OR question_id=2");
     // global $choices;
@@ -83,32 +87,21 @@ print_r($choices[1]['valid']);
     // dd($choices); 配列の中身確認
     foreach ($choices as $index => $choice){?>
  
-    <button class="answerbutton" onclick="answer(<?php echo $index;?>)"><?php echo $choice['name']; ?></button>
+    <button class="answerbutton" onclick="answer(<?php echo $i;?>,<?php echo $index;?>)" id="btn<?php echo $i?>_<?php echo $index?>"><?php echo $choice['name']; ?></button>
     
     <?php };?>
     </ul>
 <?php }; ?>
-<?php 
-    function answer_php($figure){
-        if($choices['$figure']['valid'] = 1){
-            echo "正解";
-        } else {
-            echo "不正解";
-        }
-        echo $choices['$figure']['valid'];
-    }
-  
-    ?>
-
-
-   
-   
 
     <script>
-      function answer(number){
-      var result ="<?php answer_php('number'); ?> ";
-      document.write(result);
-   }
+    function answer(question_id, choice_id){
+        if(document.getElementById("btn<?php echo $i;?>_<?php echo $index;?>").innerHTML==<?php $right[$i]['name'];?>){
+            <?php echo "正解";?>
+        } else {
+            <?php echo "fu正解";?>
+        }
+    }
     </script>
+    <?php echo $right[$i]['name'];?>
    </body>
    </html>
