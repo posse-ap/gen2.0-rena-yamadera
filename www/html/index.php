@@ -34,6 +34,7 @@ try{
     $prob_stmt = $pdo->query("SELECT * FROM choices WHERE question_id ='". $id ."'");
 
 
+
     print_r($area);
 
 if($id==1){
@@ -46,6 +47,7 @@ if($id==1){
     $choices = $stmt->fetchAll();
 }
 print_r($choices[0]['name']);
+print_r($choices[1]['valid']);
 
 
 // ?>
@@ -71,15 +73,42 @@ print_r($choices[0]['name']);
     <img src="../img/<?=$pic_area['image'];?>" alt="aa">
 
     <ul>
-    <?php for($j = 0; $j < 3; $j++){;?>
-        <button class="answerbutton"><?php echo $choices[$i*3+$j]['name']?></button>
+    <!-- <?php for($j = 0; $j < 3; $j++){;?>
+        <button class="answerbutton" id=""><?php echo $choices[$i*3+$j]['name']?></button>
 
+    <?php };?> -->
+<?php
+    $stmt = $pdo->query("SELECT * FROM choices WHERE question_id = $i + 1");
+    $choices = $stmt->fetchAll();
+    // dd($choices); 配列の中身確認
+    foreach ($choices as $index => $choice){?>
+ 
+    <button class="answerbutton" onclick="answer(<?php echo $index;?>)"><?php echo $choice['name']; ?></button>
+    
     <?php };?>
-
     </ul>
 <?php }; ?>
+<?php 
+    function answer_php($figure){
+        if($choices['$figure']['valid'] = 1){
+            echo "正解";
+        } else {
+            echo "不正解";
+        }
+        echo $choices['$figure']['valid'];
+    }
+  
+    ?>
 
-    <script src="quizy.js">
+
+   
+   
+
+    <script>
+      function answer(number){
+      var result ="<?php answer_php('number'); ?> ";
+      document.write(result);
+   }
     </script>
    </body>
    </html>
