@@ -96,6 +96,7 @@ print_r($choices[1]['valid']);
 <?php }; ?>
 
     <script>
+/*正誤判定*/
     
  <?php for($k = 0; $k<2; $k++){
         for($l = 0; $l<3; $l++){;?>
