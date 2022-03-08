@@ -24,7 +24,7 @@ try{
     $id = filter_input(INPUT_GET, 'id');
     $stmt = $pdo->query("SELECT * FROM big_questions WHERE id ='". $id ."'");//レコード取って来る
     $area = $stmt->fetchAll(); //配列にする
-    print_r($area[0]['name']) . PHP_EOL;
+    print_r($area[0]['big_question_name']) . PHP_EOL;
 
     $stmt = $pdo->query("SELECT * FROM questions WHERE big_question_id ='". $id ."'");
     $pic_areas = $stmt->fetchAll();
@@ -37,9 +37,9 @@ try{
 
     print_r($area);
 
-    $stmt = $pdo->query("SELECT name FROM choices WHERE valid = 1 AND 
-                        (SELECT * FROM questions big_question_id ='". $id ."')");
+    $stmt = $pdo->query("SELECT name FROM mix WHERE valid = 1 AND big_question_id ='". $id ."'");
     $right = $stmt->fetchAll();
+    echo $right[0]['name'];
 
 if($id==1){
     $stmt = $pdo->query("SELECT * FROM choices WHERE question_id = 1 OR question_id=2");
@@ -66,7 +66,7 @@ print_r($choices[1]['valid']);
     <link rel="stylesheet" href="quizy.css">
 </head>
 <body>
-<h1 class="title">ガチで<?=$area[0]['name'];?>の人しか解けない！ ＃<?=$area[0]['name'];?>の難読地名クイズ</h1>
+<h1 class="title">ガチで<?=$area[0]['big_question_name'];?>の人しか解けない！ ＃<?=$area[0]['big_question_name'];?>の難読地名クイズ</h1>
 
     <!-- <div id="question"></div> -->
 <?php foreach ($pic_areas as $i=>$pic_area){?>
@@ -85,23 +85,34 @@ print_r($choices[1]['valid']);
     $stmt = $pdo->query("SELECT * FROM choices WHERE question_id = $i + 1");
     $choices = $stmt->fetchAll();
     // dd($choices); 配列の中身確認
+  
+    shuffle($choices);
+    
     foreach ($choices as $index => $choice){?>
  
-    <button class="answerbutton" onclick="answer(<?php echo $i;?>,<?php echo $index;?>)" id="btn<?php echo $i?>_<?php echo $index?>"><?php echo $choice['name']; ?></button>
-    
+    <button class="answerbutton" id="btn<?php echo $i?>_<?php echo $index?>"><?php echo $choice['name']; ?></button>
     <?php };?>
     </ul>
 <?php }; ?>
 
     <script>
-    function answer(question_id, choice_id){
-        if(document.getElementById("btn<?php echo $i;?>_<?php echo $index;?>").innerHTML==<?php $right[$i]['name'];?>){
-            <?php echo "正解";?>
+    
+ <?php for($k = 0; $k<2; $k++){
+        for($l = 0; $l<3; $l++){;?>
+
+    document.getElementById('btn<?php echo $k;?>_<?php echo $l;?>').addEventListener('click', function() {
+        if(document.getElementById("btn<?php echo $k;?>_<?php echo $l;?>").innerHTML=='<?php echo $right[$k]['name'];?>'){
+            console.log('ok');
         } else {
-            <?php echo "fu正解";?>
+            console.log('ng');
         }
-    }
+    })
+ 
+
+    <?php };?>
+    <?php };?>
+    
     </script>
-    <?php echo $right[$i]['name'];?>
+   
    </body>
    </html>
