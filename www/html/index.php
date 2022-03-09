@@ -1,3 +1,29 @@
+<?php
+try{
+    
+    $pdo = new PDO(
+        //DSN
+        'mysql:host=db;dbname=webapp_database;charset=utf8mb4',
+        //user
+        'rena',
+        //password
+        'secret',
+        [
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+            PDO::ATTR_EMULATE_PREPARES   => false,
+            ]
+        );
+    }catch(PDOException $e){
+        echo $e -> getMessage() . PHP_EOL;
+        exit;
+    };
+$stmt = $pdo->query("SELECT * FROM details");
+$area = $stmt->fetchAll();
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -163,7 +189,11 @@
     <div class="modalContents">
 			
 		</div>
-</section>			
+</section>	
+
+<?php
+print_r($area[0]['hour']) . PHP_EOL;
+?>
 
 	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
