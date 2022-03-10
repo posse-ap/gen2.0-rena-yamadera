@@ -21,7 +21,7 @@ try{
 $stmt = $pdo->query("SELECT * FROM details");
 $area = $stmt->fetchAll();
 
-
+$all_sum = array_sum(array_column($area, 'hour'));
 ?>
 
 <!DOCTYPE html>
@@ -68,7 +68,7 @@ $area = $stmt->fetchAll();
 				</div>
 				<div class="time_box">
 					<p class="time_title">Total</p>
-					<p class="time_number">1348</p>
+					<p class="time_number"><?php echo $all_sum;?></p>
 					<p class="time_hour">hour</p>
 				</div>
 			</div>
