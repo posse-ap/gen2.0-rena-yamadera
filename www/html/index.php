@@ -22,6 +22,13 @@ $stmt = $pdo->query("SELECT * FROM details");
 $area = $stmt->fetchAll();
 
 $all_sum = array_sum(array_column($area, 'hour'));
+
+$stmt = $pdo->query("SELECT * FROM details WHERE MONTH(date) = 1");
+$this_month = $stmt->fetchAll();    
+$sum_month = array_sum(array_column($this_month, 'hour'));
+
+$stmt = $pdo->query("SELECT * FROM details ORDER BY 'date' DESC LIMIT 1");
+$today = $stmt->fetchAll();
 ?>
 
 <!DOCTYPE html>
@@ -58,12 +65,12 @@ $all_sum = array_sum(array_column($area, 'hour'));
 			<div class="time_boxes">
 				<div class="time_box">
 					<p class="time_title">Today</p>
-					<p class="time_number">3</p>
+					<p class="time_number"><?php echo $today[0]['hour'];?></p>
 					<p class="time_hour">hour</p>
 				</div>
 				<div class="time_box">
 					<p class="time_title">Month</p>
-					<p class="time_number">120</p>
+					<p class="time_number"><?php echo $sum_month;?></p>
 					<p class="time_hour">hour</p>
 				</div>
 				<div class="time_box">
@@ -193,6 +200,7 @@ $all_sum = array_sum(array_column($area, 'hour'));
 
 <?php
 print_r($area[0]['hour']) . PHP_EOL;
+print_r($today[0]['hour']) . PHP_EOL;
 ?>
 
 	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
