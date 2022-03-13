@@ -1,35 +1,4 @@
-<?php
-try{
-    
-    $pdo = new PDO(
-        //DSN
-        'mysql:host=db;dbname=webapp_database;charset=utf8mb4',
-        //user
-        'rena',
-        //password
-        'secret',
-        [
-            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-            PDO::ATTR_EMULATE_PREPARES   => false,
-            ]
-        );
-    }catch(PDOException $e){
-        echo $e -> getMessage() . PHP_EOL;
-        exit;
-    };
-$stmt = $pdo->query("SELECT * FROM details");
-$area = $stmt->fetchAll();
-
-$all_sum = array_sum(array_column($area, 'hour'));
-
-$stmt = $pdo->query("SELECT * FROM details WHERE MONTH(date) = 2");
-$this_month = $stmt->fetchAll();    
-$sum_month = array_sum(array_column($this_month, 'hour'));
-
-$stmt = $pdo->query("SELECT * FROM details ORDER BY date DESC LIMIT 1");
-$today = $stmt->fetchAll();
-?>
+<?php require ("require.php"); ?>
 
 <!DOCTYPE html>
 <html lang="ja">
@@ -206,6 +175,6 @@ print_r($today[0]['hour']) . PHP_EOL;
 	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
-	<script src="webapp.js"></script>
+	<script src="script.php" type="text/javascript"></script>
 </body>
 </html>

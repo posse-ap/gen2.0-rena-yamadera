@@ -16,4 +16,10 @@ INSERT INTO details(date, hour, language, contents) VALUES ('2022-2-2', 7, 'Lara
 INSERT INTO details(date, hour, language, contents) VALUES ('2022-2-4', 8, 'HTML', 'POSSE課題');
 INSERT INTO details(date, hour, language, contents) VALUES ('2022-2-6', 11, 'CSS', 'POSSE課題');
 INSERT INTO details(date, hour, language, contents) VALUES ('2022-2-8', 15, '情報システム基礎知識', 'ドットインストール');
-INSERT INTO details(date, hour, language, contents) VALUES ('2022-2-10', 8, 'HTML', 'POSSE課題');
+INSERT INTO details(date, hour, language, contents) VALUES ('2022-2-10', 1, '情報システム基礎知識', 'ドットインストール');
+INSERT INTO details(date, hour, language, contents) VALUES ('2022-2-12', 4, 'HTML', 'POSSE課題');
+INSERT INTO details(date, hour, language, contents) VALUES ('2022-2-12', 8, 'CSS', 'POSSE課題');
+INSERT INTO details(date, hour, language, contents) VALUES ('2022-2-14', 8, 'HTML', 'POSSE課題');
+INSERT INTO details(date, hour, language, contents) VALUES ('2022-2-16', 5, 'JavaScript', 'POSSE課題');
+INSERT INTO details(date, hour, language, contents) VALUES ('2022-2-18', 2, 'HTML', 'POSSE課題');
+INSERT INTO details(date, hour, language, contents) VALUES ('2022-2-20', 8, 'HTML', 'POSSE課題');
