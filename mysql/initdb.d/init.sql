@@ -1,25 +1,45 @@
 USE webapp_database;
-CREATE TABLE details(
+DROP TABLE IF EXISTS user;
+CREATE TABLE user(
     `id` int NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    `date` DATE NOT NULL,
-    `hour` int NOT NULL,
-    `language` VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+    `grade` DECIMAL(9, 1) NOT NULL,
+    `user_name` VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
+)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+INSERT INTO user(grade, user_name) VALUES (2.0, 'Rena');
+
+DROP TABLE IF EXISTS study_date;
+CREATE TABLE study_date(
+    `id` int NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    `date` DATE NOT NULL
+)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+INSERT INTO study_date(date) VALUES ('2022-1-2');
+
+DROP TABLE IF EXISTS study_contents;
+CREATE TABLE study_contents(
+    `id` int NOT NULL PRIMARY KEY AUTO_INCREMENT,
     `contents` VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-INSERT INTO details(date, hour, language, contents) VALUES ('2022-1-2', 5, 'HTML', 'ドットインストール');
-INSERT INTO details(date, hour, language, contents) VALUES ('2022-1-4', 6, 'CSS', 'N予備校');
-INSERT INTO details(date, hour, language, contents) VALUES ('2022-1-6', 10, 'JavaScript', 'POSSE課題');
-INSERT INTO details(date, hour, language, contents) VALUES ('2022-1-8', 13, 'PHP', 'POSSE課題');
-INSERT INTO details(date, hour, language, contents) VALUES ('2022-1-10', 9, 'SQL', 'N予備校');
-INSERT INTO details(date, hour, language, contents) VALUES ('2022-2-2', 7, 'Laravel', 'ドットインストール');
-INSERT INTO details(date, hour, language, contents) VALUES ('2022-2-4', 8, 'HTML', 'POSSE課題');
-INSERT INTO details(date, hour, language, contents) VALUES ('2022-2-6', 11, 'CSS', 'POSSE課題');
-INSERT INTO details(date, hour, language, contents) VALUES ('2022-2-8', 15, '情報システム基礎知識', 'ドットインストール');
-INSERT INTO details(date, hour, language, contents) VALUES ('2022-2-10', 1, '情報システム基礎知識', 'ドットインストール');
-INSERT INTO details(date, hour, language, contents) VALUES ('2022-2-12', 4, 'HTML', 'POSSE課題');
-INSERT INTO details(date, hour, language, contents) VALUES ('2022-2-12', 8, 'CSS', 'POSSE課題');
-INSERT INTO details(date, hour, language, contents) VALUES ('2022-2-14', 8, 'HTML', 'POSSE課題');
-INSERT INTO details(date, hour, language, contents) VALUES ('2022-2-16', 5, 'JavaScript', 'POSSE課題');
-INSERT INTO details(date, hour, language, contents) VALUES ('2022-2-18', 2, 'HTML', 'POSSE課題');
-INSERT INTO details(date, hour, language, contents) VALUES ('2022-2-20', 8, 'HTML', 'POSSE課題');
+INSERT INTO study_contents(contents) VALUES ('POSSE課題');
+
+DROP TABLE IF EXISTS study_language;
+CREATE TABLE study_language(
+    `id` int NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    `language` VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
+)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+INSERT INTO study_language(language) VALUES ('HTML');
+
+DROP TABLE IF EXISTS study_hour;
+CREATE TABLE study_hour(
+    `id` int NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    `hour` int NOT NULL
+)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+INSERT INTO study_hour(hour) VALUES (2);
+
+
+
+

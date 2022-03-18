@@ -96,7 +96,8 @@ var myBarChart = new Chart(ctx, {
     scales: {
       xAxes:[{
           categoryPercentage:0.8,
-          barPercentage:0.5
+          barPercentage:0.5,
+         
       }],
       yAxes: [{
         ticks: {
