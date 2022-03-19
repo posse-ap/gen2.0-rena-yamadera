@@ -12,14 +12,7 @@ $(function () {
     });
   });
 
-//   import flatpickr from 'flatpickr/dist/flatpickr.min.js';
-//   import { Japanese } from "flatpickr/dist/l10n/ja.js"
-// flatpickr('#js-datepicker');
-// flatpickr('#js-datepicker', {
-//     locale : Japanese, // 日本語用モジュールを適用
-//     dateFormat : 'Y.m.d（D）', // 2021.05.24（月）の形式で表示
-//     defaultDate : new Date() // 入力エリアの初期値
-//   });
+
 
 jQuery(function($){
     $(document).ajaxSend(function() {
