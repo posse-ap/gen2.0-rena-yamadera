@@ -29,4 +29,10 @@ $sum_month = array_sum(array_column($this_month, 'hour'));
 
 $stmt = $pdo->query("SELECT * FROM mix ORDER BY date DESC LIMIT 1");
 $today = $stmt->fetchAll();
+
+// $stmt = $pdo->query("SELECT * FROM mix WHERE id in (SELECT id FROM mix GROUP BY id)");
+$stmt = $pdo->query("SELECT id, sum(hour) from mix group by id;");
+$each_day = $stmt->fetchAll();
 ?>
+
+ 
