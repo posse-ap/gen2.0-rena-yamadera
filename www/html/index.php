@@ -80,8 +80,9 @@
 		<i class="fas fa-chevron-left"></i>
 		<p class="bottom_month">
 			 <2020年10月>
-             <?php print_r($each_day[0]['sum(hour)']); ?>
-			 //日ごとの値グループ化して持ってこれるようになった
+             <!-- <?php echo $each_days[0]['sum(hour)']; ?> -->
+			
+			 <!-- 日ごとの値グループ化して持ってこれるようになった -->
 		</p>
 		<i class="fas fa-chevron-right"></i>
 		

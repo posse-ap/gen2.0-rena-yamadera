@@ -32,7 +32,7 @@ $today = $stmt->fetchAll();
 
 // $stmt = $pdo->query("SELECT * FROM mix WHERE id in (SELECT id FROM mix GROUP BY id)");
 $stmt = $pdo->query("SELECT id, sum(hour) from mix group by id;");
-$each_day = $stmt->fetchAll();
+$each_days = $stmt->fetchAll();
 ?>
 
  

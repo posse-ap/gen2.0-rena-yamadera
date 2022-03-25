@@ -73,7 +73,14 @@ var myBarChart = new Chart(ctx, {
     labels: [,'2',,'4',,'6',,'8',,'10',,'12',,'14',,'16',,'18',,'20',,'22',,'24',,'26',,'28',,'30'],
     datasets: [
       {
-        data: [6, 5, 3, 8, 1, 6, 4,8,7,3,4,1,7,8,8,4,5,6,7,8,5,2,1,3,5,4,6,5,7,6],
+        data: [
+          <?php 
+        foreach ($each_days as $index => $each_day){
+          echo $each_day['sum(hour)'];
+		  echo ",";
+        };
+        ?>
+      ],    
         backgroundColor: "#0e73be"
       }
     ]
