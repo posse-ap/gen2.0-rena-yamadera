@@ -33,6 +33,15 @@ $today = $stmt->fetchAll();
 // $stmt = $pdo->query("SELECT * FROM mix WHERE id in (SELECT id FROM mix GROUP BY id)");
 $stmt = $pdo->query("SELECT id, sum(hour) from mix group by id;");
 $each_days = $stmt->fetchAll();
+
+$stmt = $pdo->query("SELECT language, sum(hour) from mix group by language;");
+$sum_language = $stmt->fetchAll();
+
+$stmt = $pdo->query("SELECT language, sum(hour), color from mix_lang_color group by language, color;");
+$sum_language = $stmt->fetchAll();
+
+$stmt = $pdo->query("SELECT contents, sum(hour), color from mix_contents_color group by contents, color;");
+$sum_contents = $stmt->fetchAll();
 ?>
 
  

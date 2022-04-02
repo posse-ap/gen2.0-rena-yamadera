@@ -80,9 +80,6 @@
 		<i class="fas fa-chevron-left"></i>
 		<p class="bottom_month">
 			 <2020年10月>
-             <!-- <?php echo $each_days[0]['sum(hour)']; ?> -->
-			
-			 <!-- 日ごとの値グループ化して持ってこれるようになった -->
 		</p>
 		<i class="fas fa-chevron-right"></i>
 		
@@ -169,11 +166,6 @@
 			
 		</div>
 </section>	
-
-<!-- <?php
-print_r($area[0]['hour']) . PHP_EOL;
-print_r($today[0]['hour']) . PHP_EOL;
-?> -->
 
 	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>

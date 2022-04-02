@@ -74,10 +74,10 @@ var myBarChart = new Chart(ctx, {
     datasets: [
       {
         data: [
-          <?php 
+         <?php 
         foreach ($each_days as $index => $each_day){
           echo $each_day['sum(hour)'];
-		  echo ",";
+		      echo ",";
         };
         ?>
       ],    
@@ -158,19 +158,30 @@ var ctx = document.getElementById("myPieChart");
 var chart = new Chart(ctx, {
   type: 'doughnut',
   data: {
-    labels: ["JavaScript", "CSS", "PHP", "HTML","Laravel","SQL","SHELL","情報システム基礎知識（その他）"],
+    labels: [
+      <?php  foreach ($sum_language as $each_lang){
+          echo '"';
+          echo $each_lang['language'];
+          echo '"';
+		      echo ",";
+
+        };  ?> 
+        ],
     datasets: [{
         backgroundColor: [
-            "#0345ec",
-            "#0f71bd",
-            "#20bdde",
-            "#3ccefe",
-            "#b29ef3",
-            "#6d46ec",
-            "#4917ea",
-            "#3105c0"
+          <?php foreach ($sum_language as $each_lang){
+          echo '"';
+          echo $each_lang['color'];
+          echo '"';
+		      echo ",";
+        }; ?>
         ],
-        data: [42, 18, 10, 9, 8, 6, 5, 3],
+        data: [
+          <?php foreach ($sum_language as $each_lang){
+          echo $each_lang['sum(hour)'];
+		      echo ",";
+        }; ?>
+        ],
     }]
   },
   options: {
@@ -192,14 +203,29 @@ var chart = document.getElementById("myDoughnutChart");
 var myDoughnutChart = new Chart(chart, {
   type: 'doughnut',
   data: {
-    labels: ["ドットインストール", "N予備校", "POSSE課題"],
+    labels: [
+      <?php  foreach ($sum_contents as $each_contents){
+          echo '"';
+          echo $each_contents['contents'];
+          echo '"';
+		      echo ",";
+        };  ?> 
+    ],
     datasets: [{
         backgroundColor: [
-            "#0345ec",
-            "#0f71bd",
-            "#20bdde"
+          <?php  foreach ($sum_contents as $each_contents){
+          echo '"';
+          echo $each_contents['color'];
+          echo '"';
+		      echo ",";
+        };  ?> 
         ],
-        data: [42, 33, 25],
+        data: [
+          <?php  foreach ($sum_contents as $each_contents){
+          echo $each_contents['sum(hour)'];
+		      echo ",";
+        };  ?> 
+        ],
     }]
   },
   options: {

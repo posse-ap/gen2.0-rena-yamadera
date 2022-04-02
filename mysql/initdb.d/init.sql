@@ -101,4 +101,47 @@ CREATE TABLE mix as (
 --  LEFT JOIN study_language ON study_hour.hour_id = study_language.language_id)
 --  LEFT JOIN study_contents ON study_language.language_id = study_contents.contents_id;
 
+DROP TABLE IF EXISTS language_color;
+CREATE TABLE language_color(
+    `id` int NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    `language` VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+    `color` VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
+)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+INSERT INTO language_color(language, color) VALUES ('JavaScript', '#0345ec');
+INSERT INTO language_color(language, color) VALUES ('CSS', '#0f71bd');
+INSERT INTO language_color(language, color) VALUES ('PHP', '#20bdde');
+INSERT INTO language_color(language, color) VALUES ('HTML', '#3ccefe');
+INSERT INTO language_color(language, color) VALUES ('Laravel', '#b29ef3');
+INSERT INTO language_color(language, color) VALUES ('SQL', '#6d46ec');
+INSERT INTO language_color(language, color) VALUES ('SHELL', '#4917ea');
+INSERT INTO language_color(language, color) VALUES ('情報システム基礎知識（その他）', '#3105c0');
+
+DROP TABLE IF EXISTS contents_color;
+CREATE TABLE contents_color(
+    `id` int NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    `contents` VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+    `color` VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
+)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+INSERT INTO contents_color(contents, color) VALUES ('ドットインストール', '#0345ec');
+INSERT INTO contents_color(contents, color) VALUES ('N予備校', '#0f71bd');
+INSERT INTO contents_color(contents, color) VALUES ('POSSE課題', '#20bdde');
+
+DROP TABLE IF EXISTS mix_lang_color;
+CREATE TABLE mix_lang_color as (
+SELECT
+    mix.hour, mix.language, language_color.color
+FROM
+    mix join language_color ON mix.language = language_color.language);
+
+DROP TABLE IF EXISTS mix_contents_color;
+CREATE TABLE mix_contents_color as (
+SELECT
+    mix.hour, mix.contents, contents_color.color
+FROM
+    mix join contents_color ON mix.contents = contents_color.contents);
+
+
+
 
