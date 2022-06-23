@@ -17,3 +17,9 @@ Route::get('/', function () {
 Route::get('/yamadera', function () {
     return view('yamadera');
 });
+Route::get('/quizy/1', function () {
+    return view('tokyo');
+});
+Route::get('/quizy/2', function () {
+    return view('hiroshima');
+});
